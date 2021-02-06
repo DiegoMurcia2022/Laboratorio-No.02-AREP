@@ -36,7 +36,7 @@ public class Calculator {
      * @throws LinkedListException En caso tal de ingresar una posición mayo o menor al tamaño de la LinkedList
      */
     public static double standardDeviation(MyOwnLinkedList linkedList) throws LinkedListException {
-        double meanCalculation = mean(linkedList), summation = 0, value, desviationCalculation;
+        double meanCalculation = mean(linkedList), summation = 0, value, deviationCalculation;
 
         for(int i=0;i<linkedList.size();i++) {
             value = linkedList.get(i)-meanCalculation;
@@ -44,8 +44,8 @@ public class Calculator {
             summation += Math.pow(value, 2);
         }
 
-        desviationCalculation = Math.sqrt(summation/(linkedList.size()-1));
+        deviationCalculation = Math.sqrt(summation/(linkedList.size()-1));
 
-        return Math.round(desviationCalculation*100.0)/100.0;
+        return Math.round(deviationCalculation*100.0)/100.0;
     }
 }

@@ -1,11 +1,17 @@
 package edu.eci.arep.webapp;
 
+import edu.eci.arep.CalculatorWebApp;
 import static spark.Spark.*;
 
 public class WebApp {
     public static void main(String[] args) {
         port(getPort());
-        get("/hello", (req, res) -> "Hello Heroku");
+        staticFiles.location("/public");
+
+        post("/calculator", (request, response) -> {
+            CalculatorWebApp.readJSON(request.body());
+            return "{\"media\":" + CalculatorWebApp.mean() + ", \"desviacion\":" + CalculatorWebApp.standardDeviation() + "}";
+        });
     }
 
     static int getPort() {
